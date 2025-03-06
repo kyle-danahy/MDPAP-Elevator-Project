@@ -1,5 +1,6 @@
 # ASSUMPTIONS: all floors are non-negative
 #               all floors are integers
+from argparse import ArgumentParser
 
 # constant for time to travel a single floor
 SINGLE_FLOOR_TRAVEL_TIME = 10
@@ -14,5 +15,12 @@ def calculate_travel_time(floors_to_visit):
     return {'total_travel_time': total_travel_time, 'floors_visited': floors_to_visit}
 
 if __name__ == "__main__":
-    floors_to_visit = [1, 5, 7, 5, 3, 5]
-    calculate_travel_time(floors_to_visit)
+    parser = ArgumentParser()
+    parser.add_argument("--floors",
+                        nargs='+',
+                        type=int,
+                        help="please provide the floors you would like to visit. each floor should be separated by a space",
+                        required=True)
+
+    travel_info = calculate_travel_time(parser.parse_args().floors)
+    print(travel_info)
