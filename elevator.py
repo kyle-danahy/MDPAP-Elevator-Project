@@ -12,7 +12,7 @@ def calculate_travel_time(floors_to_visit):
     total_travel_time = 0
     # start at index 1 since we don't need to calculate travel time for starting floor
     for index in range(1, len(floors_to_visit)):
-        # check that each value is a number
+        # check that each value is a positive number
         if str(floors_to_visit[index]).isnumeric():
             total_travel_time = total_travel_time + (abs(floors_to_visit[index] - floors_to_visit[index - 1]) 
                                                         * SINGLE_FLOOR_TRAVEL_TIME)
